@@ -3,18 +3,15 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        int fromYear = 2010;
-        int toYear = 2015;
-        printBonusDatesBetween(fromYear, toYear);
+        printBonusDatesBetween(2010, 2015);
     }
 
     private static void printBonusDatesBetween(int fromYear, int toYear) {
         if (fromYear > 999 && toYear <= 9290) {
             LocalDate start = LocalDate.of(fromYear, 1, 1);
             LocalDate end = LocalDate.of(toYear - 1, 12, 31);
-
-
             LocalDate next = start.minusDays(1);
+
             while ((next = next.plusDays(1)).isBefore(end.plusDays(1))) {
                 if (next.getDayOfMonth() != 10 && next.getDayOfMonth() != 20 && next.getDayOfMonth() != 30) {
 
@@ -29,18 +26,18 @@ public class Main {
 
     private static void printIfPalindrome(int year, int month, int day) {
 
-        String monthStr = String.valueOf(month);
-        String dayStr = String.valueOf(day);
+        String monthString = String.valueOf(month);
+        String dayString = String.valueOf(day);
         if (getOriginalDateInt(year, month, day) == getReversedDateInt(year, month, day)) {
 
             if (month < 10) {
-                monthStr = "0" + monthStr;
+                monthString = "0" + monthString;
             }
             if (day < 10) {
-                dayStr = "0" + dayStr;
+                dayString = "0" + dayString;
             }
 
-            System.out.println(year + "-" + monthStr + "-" + dayStr);
+            System.out.println(year + "-" + monthString + "-" + dayString);
 
         }
     }
